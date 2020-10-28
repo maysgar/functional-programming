@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "YoRv6qU0yfRKYf982PDxeF3xX5rXPsOk+XvW3fp/XMkfTZ1Ny0PmE79Ywj2E5pkOfpnoHrEmMuBgF5JOcNsC8w==",
+  "success": true,
+  "projectFilePath": "/Users/isma/Desktop/DTU/semester3/functional_programming/functional-programming/Polynomial/Polynomial.fsproj",
+  "expectedPackageFiles": [
+    "/Users/isma/.nuget/packages/fsharp.core/4.7.2/fsharp.core.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}
