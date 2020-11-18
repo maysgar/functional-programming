@@ -4,6 +4,7 @@ module Partwo =
 
     // Part 4:
     type Poly = int list
+
     type Degree = 
         | MinusInf 
         | FinN of int
@@ -76,7 +77,7 @@ module Partwo =
 
     
     // Modified for Part 3: it makes sure the Pol is legal after the sum result
-    let addPol(list1, list2) = 
+    let addPol(list1, list2) =    
 
         let rec addPolRec(list1, list2) =
             match (list1, list2) with
