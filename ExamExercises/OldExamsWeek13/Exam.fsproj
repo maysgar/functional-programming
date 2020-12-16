@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>compiler</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Exam.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FsCheck" Version="3.0.0-alpha4" />
+  </ItemGroup>
+</Project>

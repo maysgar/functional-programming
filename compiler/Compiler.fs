@@ -1,4 +1,4 @@
-namespace compiler
+namespace Compiler
 
 type Instruction = | ADD | SUB | SIGN | ABS | PUSH of int
 type Stack = int List
@@ -6,9 +6,7 @@ type Exp = X, C -2, C 7, Abs X, Minus(C 7), Add(Abs(Minus(C 7)), Sub(X, Minus(Ad
 
 module Compiler = 
 
-
     let addStack(stack : Stack, sign : string) = 
-
         match sign with 
             | "+" -> (stack.Head + stack.Tail.Head) :: stack.Tail.Tail
             | "-" -> (stack.Head - stack.Tail.Head) :: stack.Tail.Tail
@@ -31,10 +29,10 @@ module Compiler =
 
 
     //sem : Exp → int → int
-    let sem(exp : Exp, number : int) : int = 
+    let sem(exp : Exp, number : int) : int = 1
         
 
-    let compile(exp : Exp, number : int) : Instruction list =
+    let compile(exp : Exp, number : int) : Instruction list = 1
 
     
     // exec(prg) = sem(e, x)
