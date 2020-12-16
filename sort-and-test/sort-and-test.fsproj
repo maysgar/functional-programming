@@ -3,13 +3,12 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Polynomial</RootNamespace>
+    <RootNamespace>sort-and-test</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="MyFirstScript.fsx" />
     <!-- <Compile Include="Program.fs" /> -->
-    <Compile Include="Partwo.fs" />
+    <Compile Include="Functions.fs" />
     <!-- <Compile Include="Test.fs" /> -->
   </ItemGroup>
 
@@ -18,5 +17,3 @@
   </ItemGroup>
 
 </Project>
-
-

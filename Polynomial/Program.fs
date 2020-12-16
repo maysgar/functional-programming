@@ -1,4 +1,6 @@
-﻿open System
+﻿namespace Polynomial
+
+open System
 
 module Program = 
 
@@ -16,6 +18,7 @@ module Program =
         | (x::tail) -> (x*cons)::mulC(cons, tail)
 
 
+    // Modified for Part 3: it makes sure the Pol is legal after the sub result
     let rec sub(list1, list2) = 
         match (list1, list2) with
             | ([], []) -> []
@@ -61,6 +64,7 @@ module Program =
         printfn "Aqui va la lista: %A" list
         printfn "Multiplicado %A" mulc
         printfn "Resta %A" resta
+        printfn "Resta ilegal %A" (sub([1;0;3;4], [0;2;2;4]))
         printfn "mulx %A" mulx
         printfn "mul polynomial %A" (mul(list3, list4))
         printfn "Eval %A" evals

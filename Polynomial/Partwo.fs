@@ -1,5 +1,33 @@
+namespace Polynomial
 
 module Partwo =
+
+    // Part 4:
+    type Poly = int list
+
+    type Degree = 
+        | MinusInf 
+        | FinN of int
+
+    let deg(list: int list) = 
+
+        let rec deg(list, degree) : Degree =
+            match list with
+            | [] -> Degree.MinusInf
+            | [last] -> Degree.FinN (degree)
+            | head::tail -> deg(tail, degree+1)
+
+        deg(list, 0)
+
+
+    let addD(degree1, degree2) : Degree = 
+        match(degree1, degree2) with
+            | (Degree.MinusInf, _) -> Degree.MinusInf
+            | (_, Degree.MinusInf) -> Degree.MinusInf
+            | (Degree.FinN a, Degree.FinN b) -> Degree.FinN (a + b)
+
+
+
     // Define a new function to print a name.
     // It is defined above the main function.
     let printGreeting name =
@@ -26,7 +54,6 @@ module Partwo =
     let rec isPrune(list) = 
         reverse(auxPrune(reverse(list)))
 
-
     let rec toString(list) = 
 
         let rec toStringRec(list, pos) =
@@ -49,28 +76,58 @@ module Partwo =
         derivativeRec(list, 0)
 
     
-    let rec addPol(list1, list2) =
-        match (list1, list2) with
-        | ([], []) -> []
-        | (x::tail, []) -> x::addPol(tail, [])
-        | ([], x::tail) -> x::addPol([], tail)
-        | (x::tail, y::tail2) -> x+y::addPol(tail, tail2)
+    // Modified for Part 3: it makes sure the Pol is legal after the sum result
+    let addPol(list1, list2) =    
 
-    
+        let rec addPolRec(list1, list2) =
+            match (list1, list2) with
+            | ([], []) -> []
+            | (x::tail, []) -> x::addPolRec(tail, [])
+            | ([], x::tail) -> x::addPolRec([], tail)
+            | (x::tail, y::tail2) -> x+y::addPolRec(tail, tail2)
+
+        isPrune(addPolRec(list1, list2))
+
+
+    // Modified for Part 3: it makes sure the Pol is legal after the sub result
+    let sub(list1, list2) =
+
+        let rec subRec(list1, list2) = 
+            match (list1, list2) with
+                | ([], []) -> []
+                | ([], x::tail) -> x::subRec([], tail)
+                | (x::tail, []) -> x::subRec(tail, [])
+                | (x::tail, y::tail2) -> x-y::subRec(tail, tail2)
+
+        isPrune(subRec(list1, list2))
+
+    // Modified for Part 3: return an empty Pol is constant is 0
     let rec mulC(cons, list2) =
-        match (list2) with
-            | ([]) -> []
-            | (x::tail) -> (x*cons)::mulC(cons, tail)
+        match (cons, list2) with
+            | (_, []) -> []
+            | (0, _) -> []
+            | (cons, x::tail) -> (x*cons)::mulC(cons, tail)
     
 
     let rec mulX(list) = 
         0::list
 
-    
+    // Part 3: We always expect a legal result (addPol, mulC & mulX are all legal)
     let rec mul(list1, list2) = 
         match (list1, list2) with
             | ([], _) ->  []
             | (head::list1, list2) -> addPol(mulC(head, list2), mulX(mul(list1,list2)))
+
+
+    // Modified for Part 3: it makes sure the Pol is legal after eval
+    let eval(a, list) =
+
+        let rec evalRec(a, list) =
+            match (list) with 
+                | [] -> []
+                | x::tail -> a*x::evalRec(a, tail)
+
+        isPrune(evalRec(a, list))
 
 
     let rec polPow(pol, n) =
@@ -90,6 +147,16 @@ module Partwo =
                 | [] -> []
         
         composeRec(list1, list2, 0)
+
+
+    let ofList(list: int list) : Poly = 
+        isPrune(list)
+
+    let toList(poly: Poly) : int list = 
+        poly
+    
+    // let addInv p1 p2 = isLegal(addPol(isPrune(p1),isPrune(p2)));; let _ = Check.Quick addInv;
+
 
 
     [<EntryPoint>]
@@ -117,6 +184,7 @@ module Partwo =
         printfn "Convert to string -> %A" (toString(list2))
         printfn "Derivative of [4;5;6;7;8] is: %A" (derivative(list2))
         printfn "Compose [2;0;0;4] and [0;3;2]: %A" (compose(listCompose1, listCompose2))
+        printfn "Degree of polynomial: %A" (deg([1;0;0;2]))
 
         // addPol(list1, list2)
         0;; // return an integer exit code

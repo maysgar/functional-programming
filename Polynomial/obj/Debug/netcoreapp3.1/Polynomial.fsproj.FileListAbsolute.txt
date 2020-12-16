@@ -76,3 +76,4 @@
 /Users/isma/Desktop/DTU/semester3/functional_programming/functional-programming/Polynomial/obj/Debug/netcoreapp3.1/Polynomial.dll
 /Users/isma/Desktop/DTU/semester3/functional_programming/functional-programming/Polynomial/obj/Debug/netcoreapp3.1/Polynomial.pdb
 /Users/isma/Desktop/DTU/semester3/functional_programming/functional-programming/Polynomial/obj/Debug/netcoreapp3.1/Polynomial.genruntimeconfig.cache
+/Users/isma/Desktop/DTU/semester3/functional_programming/functional-programming/Polynomial/bin/Debug/netcoreapp3.1/FsCheck.dll
